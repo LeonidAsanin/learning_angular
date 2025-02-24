@@ -1,0 +1,16 @@
+<p>Counter: {{ counter() }}</p>
+<button (click)="increment($event)">Increment</button>
+<button (click)="clear()">Clear</button>
+<div [hidden]="!isEven()">Even</div>
+
+@if (!isEven()) {
+    <div>Odd</div>
+} @else {
+    <div>---</div>
+}
+
+<ul>
+    @for (element of elements(); track element.id) {
+    <li>{{ element.name }}</li>
+    }
+</ul>

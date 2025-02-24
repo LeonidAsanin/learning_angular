@@ -1,0 +1,42 @@
+<main>
+  <h1 i18n>Angular test app</h1>
+  <p appHighlight="gray">{{getText()}}</p>
+  <p i18n>{{ date | date }}</p>
+  <p i18n>{{ 18000.54 | number }}</p>
+  <button (click)="testFetch()">Test fetch</button>
+  <button id="testHttpClient" (click)="testHttpClient()">Test httpClient</button>
+  <ng-container *ngComponentOutlet="getCounterComponent(); inputs: counterInputs;" />
+  <!-- <ng-container *ngIf="counterVisible()"><app-counter [delta]="5" [intervalDelta]="1000"></app-counter></ng-container> -->
+  <!-- @if (counterVisible()) { <app-counter [delta]="10" [intervalDelta]="1000"></app-counter> } -->
+  <button (click)="removeCounter()">Remove counter</button>
+  <button (click)="toggleCounterVisibility()">Toggle counter visibility</button>
+  <app-input [(value)]="inputValue" (valueChange)="handleInput($event)" (blackOutput)="handleBlack()"></app-input>
+  <div #myDiv class="awesomeDiv"></div><!--myDiv is a template reference variable-->
+  <app-card (click)="handleCardClick($event)">
+    <h2 card-title>{{'title' | uppercase}}</h2>
+    <app-red-text text="Body" />
+  </app-card>
+  {{date | date:'dd.MM.yyyy'}}
+  @defer (on timer(2s)) {
+    <div>
+      <img src="rabbit.jpg" alt="Rabbit" width="100px" i18n-alt/>
+    </div>
+  } @loading (minimum 1s) {
+  <div>Loading rabbit</div>
+  } @placeholder(minimum 1s) {
+  <div>Rabbit</div>
+  }
+</main>
+
+<hr/>
+<button id="goToPageOneButton" routerLink="one" routerLinkActive="active-css-class">One</button>
+<button routerLink="two" routerLinkActive="active-css-class">Two</button>
+<router-outlet />
+
+<hr/>
+
+<app-state-changer/>
+<div>{{ stateService.getState() }}</div>
+<div>{{ stateService.getComplexState().foo.bar }}</div>
+<div>{{ stateService.getSignalState()() }}</div>
+<div>{{ stateService.getSignalComplexState()().foo.bar }}</div>

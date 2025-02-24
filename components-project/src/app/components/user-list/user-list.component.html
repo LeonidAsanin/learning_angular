@@ -1,0 +1,19 @@
+<h2 class="header">User list</h2>
+
+<hr/>
+
+List:
+<div>
+    <ul>
+        <ng-content />
+    </ul>
+</div>
+
+<hr/>
+
+Special list:
+<div>
+    <ul>
+        <ng-content select="app-user-item[special]">No items</ng-content>
+    </ul>
+</div>

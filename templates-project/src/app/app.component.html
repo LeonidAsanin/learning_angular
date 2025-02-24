@@ -1,0 +1,48 @@
+<app-block isRed="true" hasStyledText />
+
+<hr />
+
+<app-playground />
+
+<hr />
+
+<app-pipes-test />
+
+<hr />
+
+<div>
+    @defer {
+        <app-large />
+    } @placeholder (minimum 500ms) {
+        Loading...
+    }
+</div>
+
+<div>
+    @defer (on interaction) {
+        <app-large />
+    } @loading (minimum 500ms) { 
+        <!-- 
+            minimum - the minimum amount of time that this placeholder should be shown
+            after - the amount of time to wait after loading begins before showing the loading template 
+         -->
+        Loading...
+    } @placeholder {
+        <span>Click me!</span>
+    } @error {
+        <p>Failed to load large component.</p>
+    }
+</div>
+
+<!--
+@defer "on" options:
+    idle	Triggers when the browser is idle (default)
+    viewport	Triggers when specified content enters the viewport
+    interaction	Triggers when the user interacts with specified element
+    hover	Triggers when the mouse hovers over specified area
+    immediate	Triggers immediately after non-deferred content has finished rendering
+    timer	Triggers after a specific duration
+
+other trigger type:
+    when <condition>
+-->

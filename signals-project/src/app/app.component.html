@@ -1,0 +1,21 @@
+<div>
+  State: {{ value() }}
+</div>
+<div>
+  isOdd: {{ isOdd() }}
+</div>
+<button (click)="increment()">Increment</button>
+<button (click)="reset()">Reset</button>
+<button (click)="destroyMyEffect()">Destroy my effect</button>
+<button (click)="changeOtherValue()">Change other value</button>
+
+<br/>
+<br/>
+<hr/>
+<br/>
+
+<div>
+  Complex state: {{ complexState() | json }}
+</div>
+<button (click)="updateComplexState()">Update complex state</button>
+<button (click)="setStructurallySameComplexState()">Set same complex state</button>

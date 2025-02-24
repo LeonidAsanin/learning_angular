@@ -1,0 +1,35 @@
+<style>
+  .header {
+    color: blue;
+  }
+</style>
+
+<h1 #mainHeader class="header">Header</h1>
+<app-user-list>
+  <app-user-item id="0" />
+  <app-user-item id="1" />
+  <app-user-item id="2" />
+  <app-user-item special id="3" />
+  <!-- <div ngProjectAs="app-user-item[special]">Super user</div> -->
+</app-user-list>
+
+<hr />
+
+<input #inputComponent/>
+<app-extender input="bar"/>
+
+<hr />
+
+<app-profile [firstName]="name()" lastName="Martin" age="73" [(rating)]="rating" (ratingChange)="logValue($event)"
+  (limitExcided)="handleLimitExceeded()" />
+
+<hr />
+
+<button (click)="changeTestLifeCycleVisibility()">
+  {{(isTestLifeCycleHidden() ? 'Show' : 'Hide') + ' test lifecycle'}}
+</button>
+
+@if (!isTestLifeCycleHidden()) {
+<app-lifecycle-test [inputValue]="testValue()"/>
+<button (click)="changeTestValue()">Change value</button>
+}

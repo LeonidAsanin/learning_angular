@@ -1,0 +1,45 @@
+<p>Pipes test</p>
+
+<h1>{{ title() | titlecase }}</h1>
+
+<div>Date (original): {{ date() }}</div>
+<div>Date (default pipe): {{ date() | date }}</div>
+<div>Date (pipe with params): {{ date() | date:'dd.MM.yyyy' }}</div>
+
+<p>{{ text() | lowercase }}</p>
+<p>{{ text() | uppercase }}</p>
+
+<div>
+    <div>
+        Object: {{ object() }}
+    </div>
+    <div>
+        Object with pipe: {{ object() | json }}
+    </div>
+</div>
+<br />
+<div>
+    <div>
+        Number (original): {{ number() }}
+    </div>
+    <div>
+        Number (default pipe): {{ number() | number }}
+    </div>
+    <div>
+        Number (pipe with params): {{ number() | number:'1.0-2' }}
+    </div>
+    <!-- 
+        {minIntegerDigits}.{minFractionDigits}-{maxFractionDigits}
+        
+        minIntegerDigits: The minimum number of integer digits before the decimal point. Default is 1.
+        minFractionDigits: The minimum number of digits after the decimal point. Default is 0.
+        maxFractionDigits: The maximum number of digits after the decimal point. Default is 3.
+    -->
+</div>
+<br/>
+{{ promise() }}
+{{ promise() | async }}
+
+<div>
+    {{ 'Hello world' | kebabcase:'param1':'param2' }}
+</div>

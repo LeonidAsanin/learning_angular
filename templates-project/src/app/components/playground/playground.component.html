@@ -1,0 +1,55 @@
+@if (showHeader()) {
+    <h2>Header</h2>
+} @else if (showAltHeader()) {
+    <h3>Other header</h3>
+} @else {
+    No header
+}
+
+@if (textSignal(); as text) {
+    <p>{{text}}</p>
+}
+
+<div>
+    <h3>User list</h3>
+    <ul>
+        @for (user of users(); track user.id) {
+            @let name = user.name; <!-- Cannot be reassigned after declaration !!! -->
+            <!-- @let greeting = 'Hello, ' + name;
+            @let pi = 3.1459 * 1;
+            @let isAwesome = true;
+            @let nullishObject = null;
+            @let nullishObject2 = undefined;
+            @let coordinates = {x: 50, y: 100}; -->
+            <li [class]="$even ? 'highlighted' : 'regular'">
+                {{name}}
+            </li>
+        } @empty {
+            No users
+        }
+    </ul>
+    <!-- 
+        Contextual variables in @for blocks:
+
+        $count	Number of items in a collection iterated over
+        $index	Index of the current row
+        $first	Whether the current row is the first row
+        $last	Whether the current row is the last row
+        $even	Whether the current row index is even
+        $odd	Whether the current row index is odd
+    -->
+</div>
+
+<div>
+    @switch (role()) {
+        @case ('ADMIN') {
+            Admin
+        }
+        @case ('SUPERVISOR') {
+            Supervisor
+        }
+        @default {
+            Default
+        }
+    }
+</div>

@@ -1,0 +1,25 @@
+<h2>Template driven form</h2>
+<form #actorForm="ngForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="name">Name</label>
+        <input #nameInput="ngModel" id="name" required [(ngModel)]="model.name" name="name">
+        <div [hidden]="nameInput.valid || nameInput.pristine">
+            Name is required
+        </div>
+    </div>
+    <div>
+        <label for="studio">Studio</label>
+        <input id="studio" [(ngModel)]="model.studio" name="studio">
+    </div>
+    <div>
+        <label for="skill">Skill</label>
+        <select id="skill" required [(ngModel)]="model.skill" name="skill">
+            @for (skill of skills; track $index) {
+            <option [value]="skill">{{ skill }}</option>
+            }
+        </select>
+    </div>
+    <button type="submit" [disabled]="!actorForm.form.valid">Submit</button>
+</form>
+<button (click)="newActor(); actorForm.reset()">New Actor</button>
+{{ model | json }}

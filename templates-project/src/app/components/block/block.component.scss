@@ -1,0 +1,31 @@
+.square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-color: lightcyan;
+}
+
+.red {
+    background-color: red;
+}
+
+.bordered {
+    border: 5px solid black;
+}
+
+.rounded-border {
+    border-radius: 20px;
+}
+
+.center {
+    position: relative;
+    left: 50%;
+}
+
+.styled-text {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
