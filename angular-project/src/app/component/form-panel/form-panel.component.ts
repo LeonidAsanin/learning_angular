@@ -8,6 +8,8 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { functionValidator } from '../../validators/function-validator';
+import { crossFieldValidator } from '../../validators/cross-field-validator';
 
 @Component({
   selector: 'app-form-panel',
@@ -17,22 +19,27 @@ import {
 })
 export class FormPanelComponent {
   formBuilder = inject(FormBuilder);
-  personForm = this.formBuilder.group({
-    firstName: [
-      '',
-      Validators.compose([Validators.required, Validators.minLength(2)]),
-    ],
-    lastName: [''],
-    address: this.formBuilder.group({
-      street: [''],
-      city: [''],
-      state: [''],
-      zip: [''],
-    }),
-    aliases: this.formBuilder.array<FormControl<string | null>>([]),
-  });
-  nextId: number = 0;
-  aliases: { id: number; control: FormControl<string | null> }[] = [];
+
+  personForm = this.formBuilder.group(
+    {
+      firstName: [
+        '',
+        Validators.compose([Validators.required, Validators.minLength(2)]),
+      ],
+      lastName: [''],
+      address: this.formBuilder.group({
+        street: [''],
+        city: [''],
+        state: [''],
+        zip: [''],
+      }),
+      aliases: this.formBuilder.array<FormControl<string | null>>([]),
+    },
+    {
+      validators: crossFieldValidator,
+    }
+  );
+
   // personForm = new FormGroup({
   //   firstName: new FormControl(''),
   //   lastName: new FormControl(''),
@@ -44,8 +51,13 @@ export class FormPanelComponent {
   //   }),
   //   aliases: new FormArray<FormControl<string | null>>([]),
   // });
+
   age = new FormControl(0, Validators.min(5));
+  // age = new FormControl(0, Validators.compose([Validators.min(5), functionValidator()]));
   submit = output<{ firstName?: string | null; lastName?: string | null }>();
+
+  nextId: number = 0;
+  aliases: { id: number; control: FormControl<string | null> }[] = [];
 
   ngOnInit() {
     this.age.events.subscribe((controlEvent: ControlEvent<number | null>) => {

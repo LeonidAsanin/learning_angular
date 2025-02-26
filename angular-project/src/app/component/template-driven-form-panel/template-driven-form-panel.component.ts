@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { DirectiveValidatorDirective } from '../../validators/directive-validator.directive';
 
 class Actor {
   constructor(
@@ -13,7 +14,7 @@ class Actor {
 
 @Component({
   selector: 'app-template-driven-form-panel',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, DirectiveValidatorDirective],
   templateUrl: './template-driven-form-panel.component.html',
   styleUrl: './template-driven-form-panel.component.scss',
 })

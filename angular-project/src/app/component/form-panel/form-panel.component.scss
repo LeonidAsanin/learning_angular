@@ -2,3 +2,12 @@ input.ng-invalid {
     background-color: rgba(255, 0, 0, 0.3);
     border-color: red;
 }
+/*
+    .ng-valid       валидное
+    .ng-invalid     невалидное
+    .ng-pending     в процесса валидации
+    .ng-pristine    значение не изменялось
+    .ng-dirty       значение изменялось
+    .ng-untouched   с полем взаимодействовали
+    .ng-touched     с полем не взаимодействовали
+*/

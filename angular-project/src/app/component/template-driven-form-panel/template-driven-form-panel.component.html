@@ -1,15 +1,15 @@
 <h2>Template driven form</h2>
-<form #actorForm="ngForm" (ngSubmit)="onSubmit()">
+<form #actorForm="ngForm" (ngSubmit)="onSubmit()"><!-- Cross field validator should be applied here on form tag-->
     <div>
         <label for="name">Name</label>
-        <input #nameInput="ngModel" id="name" required [(ngModel)]="model.name" name="name">
+        <input #nameInput="ngModel" id="name" [(ngModel)]="model.name" name="name" required minLength="3" appDirectiveValidator>
         <div [hidden]="nameInput.valid || nameInput.pristine">
-            Name is required
+            Name is required and it must include a space and be at least 3 characters long.
         </div>
     </div>
     <div>
         <label for="studio">Studio</label>
-        <input id="studio" [(ngModel)]="model.studio" name="studio">
+        <input id="studio" [(ngModel)]="model.studio" name="studio"><!-- We must defined name attribute to register the element with the NgForm -->
     </div>
     <div>
         <label for="skill">Skill</label>
