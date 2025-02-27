@@ -112,3 +112,26 @@ ng build                         // Build application with "localize" from angul
 
 ng build --configuration=production,ru      // Build application with "production" config in "ru" locale
 ng serve --configuration=ru                 // Run development mode with "ru" locale (!!! Only one locale supported)
+
+## Testing
+ng test                                   // Run karma test in "watch" mode with opening of "karma-jasmine-html-reporter" in browser
+        --no-watch                        // Option to turn off "watch" mode. Tests run exactly one time
+        --no-progress                     // Option to turn off "progress" logging to the console while building
+        --browsers=ChromeHeadless         // Do not open browser with "karma-jasmine-html-reporter"
+
+ng generate config karma         // Generate karma config for configuration
+
+ng test --no-watch --no-progress --browsers=ChromeHeadless --code-coverage        // Generate a coverage report
+
+If you want to create code-coverage reports every time you test, 
+set the following option in the Angular CLI configuration file, angular.json:
+"test": {
+  "options": {
+    "codeCoverage": true
+  }
+}
+
+Code coverage percentages (for example, minimum of 80% code coverage) 
+can be configured in karma.conf.js file in "coverageReporter" block
+Documentation: https://angular.dev/guide/testing/code-coverage
+
